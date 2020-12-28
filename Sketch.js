@@ -248,6 +248,7 @@ function draw() {
             gameState = Thinking;
         }
         
+        //Checking if the player has all the keys
         if(gameState == Thinking) {
             if(KeyCount == 5){
                 gameState = End;
