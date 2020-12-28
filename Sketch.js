@@ -13,6 +13,7 @@ var Serve = -1;
 var Play = 0;
 var Logic = 6;
 var End = 7;
+var Thinking = 8;
 
 //Different quiz states for each key
 var Quiz1 = 1;
@@ -244,9 +245,18 @@ function draw() {
         }
 
         if(player.isTouching(endSprite)){
-            gameState = End;
+            gameState = Thinking;
         }
-
+        
+        if(gameState == Thinking) {
+            if(KeyCount == 5){
+                gameState = End;
+            }
+            else {
+                //create new form to tell the person he doesnt have all the keys and add a continue button at the last
+            }   
+        }
+        
         //Setting up the camera
         camera.position.x = player.x;
         camera.position.y = player.y;
