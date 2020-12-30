@@ -14,6 +14,7 @@ var Play = 0;
 var Logic = 6;
 var End = 7;
 var Thinking = 8;
+var Nothing = 9;
 
 //Different quiz states for each key
 var Quiz1 = 1;
@@ -248,21 +249,28 @@ function draw() {
             gameState = Thinking;
         }
         
-        //Checking if the player has all the keys
-        if(gameState == Thinking) {
-            if(KeyCount == 5){
-                gameState = End;
-            }
-            else {
-                //create new form to tell the person he doesnt have all the keys and add a continue button at the last
-            }   
-        }
-        
         //Setting up the camera
         camera.position.x = player.x;
         camera.position.y = player.y;
 
         //Displaying everything
         drawSprites();
+    }
+
+    //Checking if the player has all the keys
+    if(gameState == Thinking) {
+        if(KeyCount == 5){
+            gameState = End;
+        }
+        else {
+            var formThink = new FormThink();
+            formThink.display();
+            gameState = Nothing;
+        }   
+    }
+
+    //Gamestate Nothing to give a pause when forms are working so they dont get printed again and again
+    if(gameState == Nothing) {
+        //see doing nothing like a lazy person lol :P
     }
 }
