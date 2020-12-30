@@ -178,8 +178,8 @@ function setup() {
 
     // Creating the starting form
     if (gameState = Serve) {
-        form = new Form();
-        form.display();
+        formStart = new FormStart();
+        formStart.display();
     }
 }
 
