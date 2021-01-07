@@ -16,13 +16,6 @@ var End = 7;
 var Thinking = 8;
 var Nothing = 9;
 
-//Different quiz states for each key
-var Quiz1 = 1;
-var Quiz2 = 2;
-var Quiz3 = 3;
-var Quiz4 = 4;
-var Quiz5 = 5;
-
 // Creating variables for edges so player doesnt go out of maze
 var Edge1, Edge2, Edge3, Edge4;
 var Mazeblocks;
@@ -215,32 +208,42 @@ function draw() {
         player.collide(Mazeblocks);
 
         //Changing Gamestate if Player touches key & hiding them
-        if(player.isTouching(Key1)){
-            gameState = Quiz1;
+        if(player.isTouching(Key1) && Key1.visible == true){
+            var formQuiz1 = new FormQuiz1();
+            formQuiz1.display();
+            gameState = Nothing;
             Key1.visible = false;
             KeyCount = KeyCount + 1;
         }
 
-        if(player.isTouching(Key2)){
-            gameState = Quiz2;
+        if(player.isTouching(Key2) && Key2.visible == true){
+            var formQuiz2 = new FormQuiz2();
+            formQuiz2.display();
+            gameState = Nothing;
             Key2.visible = false;
             KeyCount = KeyCount + 1;
         }
 
-        if(player.isTouching(Key3)){
-            gameState = Quiz3;
+        if(player.isTouching(Key3) && Key3.visible == true){
+            var formQuiz3 = new FormQuiz3();
+            formQuiz3.display();
+            gameState = Nothing;
             Key3.visible = false;
             KeyCount = KeyCount + 1;
         }
 
-        if(player.isTouching(Key4)){
-            gameState = Quiz4;
+        if(player.isTouching(Key4) && Key4.visible == true){
+            var formQuiz4 = new FormQuiz4();
+            formQuiz4.display();
+            gameState = Nothing;
             Key4.visible = false;
             KeyCount = KeyCount + 1;
         }
 
-        if(player.isTouching(Key5)){
-            gameState = Quiz5;
+        if(player.isTouching(Key5) && Key5.visible == true){
+            var formQuiz5 = new FormQuiz5();
+            formQuiz5.display();
+            gameState = Nothing;
             Key5.visible = false;
             KeyCount = KeyCount + 1;
         }
