@@ -20,14 +20,21 @@ var Nothing = 9;
 var Edge1, Edge2, Edge3, Edge4;
 var Mazeblocks;
 
+var LogicX;
+var LogicY;
+
 var endSprite;
 var endSpriteImage;
+
+var logicSprite;
+var logicSpriteImage;
 
 function preload() {
     //Loading the images
     playerImage = loadImage("Images/am.png");
     keyImage = loadImage("Images/key.png");
     endSpriteImage = loadImage("Images/end.png");
+    logicSpriteImage = loadImage("Images/hole.png");
 }
 
 function setup() {
@@ -169,6 +176,11 @@ function setup() {
     endSprite.addImage(endSpriteImage);
     endSprite.scale = 0.3;
 
+    //Creating logicSprite
+    logicSprite = createSprite(2400,250,10,10);
+    logicSprite.addImage(logicSpriteImage);
+    logicSprite.scale = 0.7;
+
     // Creating the starting form
     if (gameState = Serve) {
         formStart = new FormStart();
@@ -248,8 +260,19 @@ function draw() {
             KeyCount = KeyCount + 1;
         }
 
+        //Checking if player is at the end
         if(player.isTouching(endSprite)){
             gameState = Thinking;
+        }
+
+        //Checking if player is at logic question
+        if(player.isTouching(logicSprite) && logicSprite.visible == true){
+            var formLogic = new FormLogic;
+            formLogic.display();
+
+            logicSprite.visible = false;
+
+            gameState = Nothing
         }
         
         //Setting up the camera
@@ -270,6 +293,29 @@ function draw() {
             formThink.display();
             gameState = Nothing;
         }   
+    }
+
+    //Logic Question Trying if the values work
+    if(gameState == Logic) {
+        var testSubject = createSprite(200, 150, LogicX, LogicY);
+        var cliffLeft = createSprite(0,250,150,20);
+        var cliffRight = createSprite(400,250,150,20);
+
+        if(testSubject.isTouching(cliffLeft) && testSubject.isTouching(cliffRight)){
+            var formLogicCorrect = new FormLogicCorrect;
+            formLogicCorrect.display();
+
+            gameState = Nothing;
+        }
+
+        if(testSubject.y > 400){
+            var formLogicCorrect = new FormLogicCorrect;
+            formLogicCorrect.display();
+
+            gameState = Nothing;
+        }
+
+        drawSprites();
     }
 
     //Gamestate Nothing to give a pause when forms are working so they dont get printed again and again
