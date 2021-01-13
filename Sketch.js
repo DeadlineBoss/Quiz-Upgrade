@@ -6,13 +6,13 @@ var playerImage;
 var Key1, Key2, Key3, Key4, Key5;
 var keyImage;
 var KeyCount = 0;
+var correctAnswers = 0;
 
 // Gamestates
 var gameState = -1;
 var Serve = -1;
 var Play = 0;
 var Logic = 6;
-var End = 7;
 var Thinking = 8;
 var Nothing = 9;
 
@@ -20,14 +20,21 @@ var Nothing = 9;
 var Edge1, Edge2, Edge3, Edge4;
 var Mazeblocks;
 
-var LogicX;
-var LogicY;
-
+//Creating sprites for the ending
 var endSprite;
 var endSpriteImage;
 
+//Creating sprites for logic question
 var logicSprite;
 var logicSpriteImage;
+var logicTest;
+var LogicX;
+var LogicY;
+var testSubject;
+var cliffLeft;
+var cliffRight;
+var cliffLeftSoil;
+var cliffRightSoil;
 
 function preload() {
     //Loading the images
@@ -181,6 +188,20 @@ function setup() {
     logicSprite.addImage(logicSpriteImage);
     logicSprite.scale = 0.7;
 
+    //Creating Logic question sprites
+    testSubject = createSprite(200, 150, LogicX, LogicY);
+    cliffLeft = createSprite(0,250,250,20);
+    cliffRight = createSprite(400,250,250,20);
+    cliffLeftSoil = createSprite(0,325,250,150);
+    cliffRightSoil = createSprite(400,325,250,150);
+
+    //Setting visible to false so doesnt cause a mess
+    testSubject.visible = false;
+    cliffLeft.visible = false;
+    cliffRight.visible = false;
+    cliffLeftSoil.visible = false;
+    cliffRightSoil.visible = false;
+
     // Creating the starting form
     if (gameState = Serve) {
         formStart = new FormStart();
@@ -190,11 +211,7 @@ function setup() {
 
 function draw() {
     //Creating the background
-    background("white");
-
-    //to check mouse xpos and ypos
-    console.log(mouseX);
-    console.log(mouseY);
+    background("white");     
 
     //What happens when we start the game 
     if (gameState == Play) {
@@ -286,7 +303,10 @@ function draw() {
     //Checking if the player has all the keys
     if(gameState == Thinking) {
         if(KeyCount == 5){
-            gameState = End;
+            var formWin = new FormWin;
+            formWin.display();
+
+            gameState = Nothing;
         }
         else {
             var formThink = new FormThink();
@@ -297,9 +317,38 @@ function draw() {
 
     //Logic Question Trying if the values work
     if(gameState == Logic) {
-        var testSubject = createSprite(200, 150, LogicX, LogicY);
-        var cliffLeft = createSprite(0,250,150,20);
-        var cliffRight = createSprite(400,250,150,20);
+        //Using var logicTest to run this code only once
+        if(logicTest == 1){
+            //seting the sprites according to the current scene
+            testSubject.x = player.x;
+            testSubject.y = player.y - 150;
+            testSubject.width = LogicX;
+            testSubject.height = LogicY;
+            cliffLeft.x = player.x - 200;
+            cliffLeft.y = player.y + 50;
+            cliffRight.x = player.x + 200;
+            cliffRight.y = player.y + 50;
+            cliffLeftSoil.x = player.x - 200;
+            cliffLeftSoil.y = player.y + 125;
+            cliffRightSoil.x = player.x + 200;
+            cliffRightSoil.y = player.y + 125; 
+
+            //Turning it to zero
+            logicTest = 0
+        }
+
+        //Using rect funtion and setting every parameter accordingly also adding colors
+        fill(193,154,107);
+        rect(testSubject.x - testSubject.width/2,testSubject.y - testSubject.height/2,testSubject.width,testSubject.height);
+        fill(0,204,0);
+        rect(cliffLeft.x - cliffLeft.width/2,cliffLeft.y - cliffLeft.height/2,cliffLeft.width,cliffLeft.height);
+        rect(cliffRight.x - cliffRight.width/2,cliffRight.y - cliffRight.height/2,cliffRight.width,cliffRight.height);
+        fill(132,105,78);
+        rect(cliffLeftSoil.x - cliffLeftSoil.width/2,cliffLeftSoil.y - cliffLeftSoil.height/2,cliffLeftSoil.width,cliffLeftSoil.height);
+        rect(cliffRightSoil.x - cliffRightSoil.width/2,cliffRightSoil.y - cliffRightSoil.height/2,cliffRightSoil.width,cliffRightSoil.height);
+
+        //making testsubject go bottom
+        testSubject.y = testSubject.y + 1;
 
         if(testSubject.isTouching(cliffLeft) && testSubject.isTouching(cliffRight)){
             var formLogicCorrect = new FormLogicCorrect;
@@ -308,14 +357,12 @@ function draw() {
             gameState = Nothing;
         }
 
-        if(testSubject.y > 400){
-            var formLogicCorrect = new FormLogicCorrect;
-            formLogicCorrect.display();
+        if(testSubject.y > 600){
+            var formLogicWrong = new FormLogicWrong;
+            formLogicWrong.display();
 
             gameState = Nothing;
         }
-
-        drawSprites();
     }
 
     //Gamestate Nothing to give a pause when forms are working so they dont get printed again and again

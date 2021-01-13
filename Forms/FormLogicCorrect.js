@@ -1,5 +1,4 @@
 class FormLogicCorrect {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Continue');
@@ -11,10 +10,10 @@ class FormLogicCorrect {
     display(){
         //Setting up all the elements of the form
         this.instructions.html("Your Sprite Worked!!");
-        this.instructions.position(55,100);
+        this.instructions.position(90,100);
 
-        this.instructions2.html("You can pass the Vally");
-        this.instructions2.position(90,140);
+        this.instructions2.html("You can pass the Hole");
+        this.instructions2.position(80,140);
 
         this.instructions1.html("Press Continue to Continue");
         this.instructions1.position(50,180);
@@ -32,4 +31,4 @@ class FormLogicCorrect {
             gameState = Play;
         });
     }
-   }
+}

@@ -1,5 +1,4 @@
 class FormQuiz2 {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Submit');
@@ -49,6 +48,7 @@ class FormQuiz2 {
                 this.question.hide();
 
                 if(selected == 3) {
+                    correctAnswers = correctAnswers + 10;
                     var formCorrect = new FormCorrect();
                     formCorrect.display();
                 }
@@ -60,4 +60,4 @@ class FormQuiz2 {
             }
         });
     }
-   }
+}

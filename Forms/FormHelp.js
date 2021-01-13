@@ -1,5 +1,4 @@
 class FormHelp {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Go Back');
@@ -38,4 +37,4 @@ class FormHelp {
             formStart.display();
         });
     }
-   }
+}

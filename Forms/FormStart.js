@@ -1,5 +1,4 @@
 class FormStart {
-
    constructor() {
         //Creating all the elements of the form
         this.button = createButton('Play');
@@ -36,5 +35,5 @@ class FormStart {
             formHelp.display();
         })
     }
-  }
+}
   

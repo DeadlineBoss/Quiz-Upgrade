@@ -1,5 +1,4 @@
 class FormWrong {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Go Back');
@@ -32,4 +31,4 @@ class FormWrong {
             gameState = Play;
         });
     }
-   }
+}

@@ -1,5 +1,4 @@
 class FormLogicWrong {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Try Again');
@@ -16,8 +15,8 @@ class FormLogicWrong {
         this.instructions2.html("Your Brigde Fell");
         this.instructions2.position(100,140);
 
-        this.instructions1.html("Press Try Again to get another chance!!");
-        this.instructions1.position(30,180);
+        this.instructions1.html("Press Try Again to get another chance!");
+        this.instructions1.position(5,180);
 
         this.button.position(160, 350);
    
@@ -33,4 +32,4 @@ class FormLogicWrong {
             formLogicAgain.display();
         });
     }
-   }
+}

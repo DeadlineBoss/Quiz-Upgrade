@@ -1,16 +1,18 @@
 class FormLogic {
-
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Submit');
         this.textbox1 = createInput('Enter Width');
         this.textbox2 = createInput('Enter Height');
-
+        this.title = createElement('h2');
     }
    
     display(){
-        this.textbox1.position(150,150);
-        this.textbox2.position(150,180);
+        this.title.html("Build  brige to pass the hole");
+        this.title.position(70,10);
+
+        this.textbox1.position(110,150);
+        this.textbox2.position(110,180);
 
         this.button.position(160, 350);
    
@@ -23,8 +25,12 @@ class FormLogic {
             this.button.hide();
             this.textbox1.hide();
             this.textbox2.hide();
+            this.title.hide();
 
-            //Going back to MainForm
+            //Changing value to one
+            logicTest = 1;
+
+            //Changing gamestate
             gameState = Logic; 
         });
     }
