@@ -216,20 +216,20 @@ function draw() {
     //What happens when we start the game 
     if (gameState == Play) {
 
-        //Movement Using W,A,S,D
-        if(keyDown("W")) {
+        //Movement Using Arrow
+        if(keyDown(UP_ARROW)) {
             player.y = player.y - 10;
         }
 
-        if(keyDown("S")) {
+        if(keyDown(DOWN_ARROW)) {
             player.y = player.y + 10;
         }
     
-        if(keyDown("A")) {
+        if(keyDown(LEFT_ARROW)) {
           player.x = player.x - 10;
         }
 
-        if(keyDown("D")) {
+        if(keyDown(RIGHT_ARROW)) {
             player.x = player.x + 10;
         }
 

@@ -24,18 +24,34 @@ class FormQuiz1 {
 
         this.button1.mousePressed(()=>{
             selected = 1;
+            this.button1.style('background-color', rgb(76, 228, 76));
+            this.button2.style('background-color', "white");
+            this.button3.style('background-color', "white");
+            this.button4.style('background-color', "white");
         });
 
         this.button2.mousePressed(()=>{
             selected = 2;
+            this.button2.style('background-color', rgb(76, 228, 76));
+            this.button1.style('background-color', "white");
+            this.button3.style('background-color', "white");
+            this.button4.style('background-color', "white");
         });
 
         this.button3.mousePressed(()=>{
             selected = 3;
+            this.button3.style('background-color', rgb(76, 228, 76));
+            this.button1.style('background-color', "white");
+            this.button2.style('background-color', "white");
+            this.button4.style('background-color', "white");
         });
 
         this.button4.mousePressed(()=>{
             selected = 4;
+            this.button4.style('background-color', rgb(76, 228, 76));
+            this.button1.style('background-color', "white");
+            this.button2.style('background-color', "white");
+            this.button3.style('background-color', "white");
         });
 
         this.button.mousePressed(()=>{
