@@ -2,10 +2,10 @@ class FormQuiz4 {
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Submit');
-        this.button1 = createButton('Option 1');
-        this.button2 = createButton('Option 2');
-        this.button3 = createButton('Option C');
-        this.button4 = createButton('Option 4');
+        this.button1 = createButton('Home Text Marking Language');
+        this.button2 = createButton('Home Text Marked Language');
+        this.button3 = createButton('Hyper Text Markup Language');
+        this.button4 = createButton('Hyper Text Markup Leveler');
         this.question = createElement('h2');
     }
    
@@ -13,13 +13,13 @@ class FormQuiz4 {
         //Setting up all the elements of the form
         var selected = 0;
         
-        this.question.html("sample question");
-        this.question.position(100,10);
+        this.question.html("What does HTML stand for");
+        this.question.position(10,10);
 
-        this.button1.position(100, 170);
-        this.button2.position(200, 170);
-        this.button3.position(100, 230);
-        this.button4.position(200, 230);
+        this.button1.position(10, 170);
+        this.button2.position(210, 170);
+        this.button3.position(10, 230);
+        this.button4.position(210, 230);
         this.button.position(345, 375);
 
         this.button1.mousePressed(()=>{

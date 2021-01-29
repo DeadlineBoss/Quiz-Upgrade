@@ -2,10 +2,10 @@ class FormQuiz5 {
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Submit');
-        this.button1 = createButton('Option 1');
-        this.button2 = createButton('Option 2');
-        this.button3 = createButton('Option C');
-        this.button4 = createButton('Option 4');
+        this.button1 = createButton('Ctrl + Shift + K');
+        this.button2 = createButton('Shift + Ctrl + J');
+        this.button3 = createButton('Ctrl + Shift + J');
+        this.button4 = createButton('Ctrl + Shift + C');
         this.question = createElement('h2');
     }
    
@@ -13,13 +13,13 @@ class FormQuiz5 {
         //Setting up all the elements of the form
         var selected = 0;
         
-        this.question.html("sample question");
-        this.question.position(100,10);
+        this.question.html("Shortcut to open console");
+        this.question.position(80,10);
 
-        this.button1.position(100, 170);
-        this.button2.position(200, 170);
-        this.button3.position(100, 230);
-        this.button4.position(200, 230);
+        this.button1.position(90, 170);
+        this.button2.position(210, 170);
+        this.button3.position(90, 230);
+        this.button4.position(210, 230);
         this.button.position(345, 375);
 
         this.button1.mousePressed(()=>{

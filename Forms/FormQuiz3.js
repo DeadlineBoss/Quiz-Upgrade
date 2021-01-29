@@ -2,19 +2,23 @@ class FormQuiz3 {
     constructor() {
         //Creating all the elements of the form
         this.button = createButton('Submit');
-        this.button1 = createButton('Option 1');
-        this.button2 = createButton('Option 2');
-        this.button3 = createButton('Option C');
-        this.button4 = createButton('Option 4');
+        this.button1 = createButton('fun');
+        this.button2 = createButton('new');
+        this.button3 = createButton('str');
+        this.button4 = createButton('var');
         this.question = createElement('h2');
+        this.question1 = createElement('h2');
     }
    
     display(){
         //Setting up all the elements of the form
         var selected = 0;
         
-        this.question.html("sample question");
-        this.question.position(100,10);
+        this.question.html("What keyword is used to");
+        this.question.position(60,10);
+
+        this.question1.html("declare a variable");
+        this.question1.position(80,30);
 
         this.button1.position(100, 170);
         this.button2.position(200, 170);
@@ -62,8 +66,9 @@ class FormQuiz3 {
                 this.button3.hide();
                 this.button4.hide();
                 this.question.hide();
+                this.question1.hide();
 
-                if(selected == 3) {
+                if(selected == 4) {
                     correctAnswers = correctAnswers + 10;
                     var formCorrect = new FormCorrect();
                     formCorrect.display();
